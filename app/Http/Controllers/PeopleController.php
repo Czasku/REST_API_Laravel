@@ -19,7 +19,7 @@ class PeopleController extends Controller
 
         $people->save();
 
-        return response()->json('Pomyślnie dodano osobe!');
+        return response()->json('Pomyślnie dodano osobe!', 200);
     }
 
     public function update(Request $request)
@@ -35,27 +35,27 @@ class PeopleController extends Controller
 
         $people->update();
 
-        return response()->json('Pomyślnie zaktualizowano osobe!');
+        return response()->json('Pomyślnie zaktualizowano osobe!', 200);
     }
 
     public function delete(Request $request)
     {
         $people = People::findorfail($request->id)->delete();
 
-        return response()->json('Pomyślnie usunięto osobe!');
+        return response()->json('Pomyślnie usunięto osobe!', 200);
     }
     
     public function readall()
     {
         $people = People::all();
 
-        return response()->json($people);
+        return response()->json($people, 200);
     }
     
     public function read(Request $request)
     {
         $people = People::findorfail($request->id);
 
-        return response()->json($people);
+        return response()->json($people, 200);
     }
 }
